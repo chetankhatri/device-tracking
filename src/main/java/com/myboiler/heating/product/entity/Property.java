@@ -12,28 +12,40 @@ import io.swagger.annotations.ApiModelProperty;
 public class Property {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@ApiModelProperty(notes = "The database generated Property ID")
 	@Column(name = "property_id")
 	private long propertyId;
+	@ApiModelProperty(notes = "The database generated Customer ID")
 	@Column(name = "customer_id")
 	private long customerId;
+	@ApiModelProperty(notes = "The Building number of property", required=true)
 	@Column(name = "building_number")
 	private String buildingNumber;
+	@ApiModelProperty(notes = "The Street Address of property", required=true)
 	@Column(name = "street_address")
 	private String streetAddress;
+	@ApiModelProperty(notes = "The City of property", required=true)
 	@Column(name = "city")
 	private String city;
+	@ApiModelProperty(notes = "The Region of property", required=true)
 	@Column(name = "region")
 	private String region;
+	@ApiModelProperty(notes = "The postal code of property", required=true)
 	@Column(name = "postal_code")
 	private String postalCode;
+	@ApiModelProperty(notes = "The Building number of property", required=true)
 	@Column(name = "country_code")
 	private String countryCode;
+	@ApiModelProperty(notes = "The Occupants name of property", required=true)
 	@Column(name = "occupants_name")
 	private String occupantsName;
+	@ApiModelProperty(notes = "The Occupants phone of property", required=true)
 	@Column(name = "occupants_phone")
 	private String occupantsPhone;
+	@ApiModelProperty(notes = "The Occupants email of property", required=true)
 	@Column(name = "occupants_email")
 	private String occupantsEmail;
+	@ApiModelProperty(notes = "Notes for property", required=true)
 	@Column(name = "notes")
 	private String notes;
 	

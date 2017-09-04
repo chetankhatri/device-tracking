@@ -56,21 +56,21 @@ public class CustomerController {
 		Customer customer = customerService.getCustomerByID(customerId);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
-	@ApiOperation(value = "Search a customer by Region",response = Customer.class)
+	@ApiOperation(value = "Search a customer by Region",response = Iterable.class)
 	@GetMapping("regionwise")
 	public ResponseEntity<List<Customer>> getCustomerByRegion(@RequestParam("region") String region)
 	{
 		List<Customer> customer = customerService.getCustomerByRegion(region);
 		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
 	}
-	@ApiOperation(value = "Search a customer by City",response = Customer.class)
+	@ApiOperation(value = "Search a customer by City",response = Iterable.class)
 	@GetMapping("citywise")
 	public ResponseEntity<List<Customer>> getCustomerByCity(@RequestParam("city") String city)
 	{
 		List<Customer> customer = customerService.getCustomerByCity(city);
 		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
 	}
-	@ApiOperation(value = "Search a customer by Company name",response = Customer.class)
+	@ApiOperation(value = "Search a customer by Company name",response = Iterable.class)
 	@GetMapping("company")
 	public ResponseEntity<List<Customer>> getCustomerByCompany(@RequestParam("companyName") String companyName)
 	{

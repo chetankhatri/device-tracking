@@ -12,24 +12,34 @@ import io.swagger.annotations.ApiModelProperty;
 public class Device {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
+	@ApiModelProperty(notes = "The database generated Device ID")
 	@Column(name = "device_id")
 	private long deviceId;
+	@ApiModelProperty(notes = "The property id of the device", required = true)
 	@Column(name = "property_id")
 	private long propertyId;
+	@ApiModelProperty(notes = "The appliance type of the device", required = true)
 	@Column(name = "appliance_type")
 	private String applianceType;
+	@ApiModelProperty(notes = "The manufacturer of the device", required = true)
 	@Column(name = "manufacturer")
 	private String manufacturer;
+	@ApiModelProperty(notes = "The model of the device", required = true)
 	@Column(name = "model")
 	private String model;
+	@ApiModelProperty(notes = "The UPC of the device", required = true)
 	@Column(name = "upc")
 	private String upc;
+	@ApiModelProperty(notes = "The location of the device", required = true)
 	@Column(name = "location")
 	private String location;
+	@ApiModelProperty(notes = "The date installed of the device", required = true)
 	@Column(name = "date_installed")
 	private String dateInstalled;
+	@ApiModelProperty(notes = "The serial number of the device", required = true)
 	@Column(name = "serial_number")
 	private String serialNumber;
+	@ApiModelProperty(notes = "Notes for the device")
 	@Column(name = "notes")
 	private String notes;
 	
