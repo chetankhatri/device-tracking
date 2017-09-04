@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name = "device")
 public class Device {
