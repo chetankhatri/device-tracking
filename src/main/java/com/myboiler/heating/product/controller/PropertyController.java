@@ -5,9 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.myboiler.heating.product.service.IPropertyService;
 import com.myboiler.heating.product.entity.Property;
 import java.util.List;
@@ -37,36 +36,36 @@ public class PropertyController {
 		return new ResponseEntity<List<Property>>(property, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Property with an Occupants Name",response = Iterable.class)
-	@GetMapping("occupantsname")
-	public ResponseEntity<List<Property>> getPropertyByOccupantsName(@RequestParam("occupantsName") String occupantsName)
+	@GetMapping("occupantsname/{occupantsName}")
+	public ResponseEntity<List<Property>> getPropertyByOccupantsName(@PathVariable("occupantsName") String occupantsName)
 	{
 		List<Property> property = propertyService.getPropertyByOccupantsName(occupantsName);
 		return new ResponseEntity<List<Property>>(property, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Property with a Customer ID",response = Iterable.class)
-	@GetMapping("customerid")
-	public ResponseEntity<List<Property>> getPropertyByCustomerID(@RequestParam("customerId") long customerId)
+	@GetMapping("customerid/{customerId}")
+	public ResponseEntity<List<Property>> getPropertyByCustomerID(@PathVariable("customerId") long customerId)
 	{
 		List<Property> property = propertyService.getPropertyByCustomerID(customerId);
 		return new ResponseEntity<List<Property>>(property, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Property with a City Name",response = Iterable.class)
-	@GetMapping("citywise")
-	public ResponseEntity<List<Property>> getPropertyByCity(@RequestParam("city") String city)
+	@GetMapping("citywise/{city}")
+	public ResponseEntity<List<Property>> getPropertyByCity(@PathVariable("city") String city)
 	{
 		List<Property> property = propertyService.getPropertyByCity(city);
 		return new ResponseEntity<List<Property>>(property, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Property by Region",response = Iterable.class)
-	@GetMapping("regionwise")
-	public ResponseEntity<List<Property>> getPropertyByRegion(@RequestParam("region") String region)
+	@GetMapping("regionwise/{region}")
+	public ResponseEntity<List<Property>> getPropertyByRegion(@PathVariable("region") String region)
 	{
 		List<Property> property = propertyService.getPropertyByRegion(region);
 		return new ResponseEntity<List<Property>>(property, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Property with a postal code",response = Iterable.class)
-	@GetMapping("postalcodewise")
-	public ResponseEntity<List<Property>> getPropertyByPostalCode(@RequestParam("postalCode") String postalCode)
+	@GetMapping("postalcodewise/{postcalCode}")
+	public ResponseEntity<List<Property>> getPropertyByPostalCode(@PathVariable("postalCode") String postalCode)
 	{
 		List<Property> property = propertyService.getPropertyByPostalCode(postalCode);
 		return new ResponseEntity<List<Property>>(property, HttpStatus.OK);

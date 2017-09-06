@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myboiler.heating.product.service.IDeviceService;
 import com.myboiler.heating.product.entity.Device;
@@ -37,36 +37,36 @@ public class DeviceController {
 		return new ResponseEntity<List<Device>>(device, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Device with an appliance",response = Iterable.class)
-	@GetMapping("appliance")
-	public ResponseEntity<List<Device>> getDevicesByApplianceType(@RequestParam("type") String type)
+	@GetMapping("appliance/{type}")
+	public ResponseEntity<List<Device>> getDevicesByApplianceType(@PathVariable("type") String type)
 	{
 		List<Device> device = deviceService.getDevicesByApplianceType(type);
 		return new ResponseEntity<List<Device>>(device, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Device with a manufacturer",response = Iterable.class)
-	@GetMapping("manufacturer")
-	public ResponseEntity<List<Device>> getDevicesByManufacturer(@RequestParam("make") String make)
+	@GetMapping("manufacturer/{make}")
+	public ResponseEntity<List<Device>> getDevicesByManufacturer(@PathVariable("make") String make)
 	{
 		List<Device> device = deviceService.getDevicesByManufacturer(make);
 		return new ResponseEntity<List<Device>>(device, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Device with a UPC",response = Device.class)
-	@GetMapping("upc")
-	public ResponseEntity<Device> getDeviceByUPC(@RequestParam("upc") String upc)
+	@GetMapping("upc/{code}")
+	public ResponseEntity<Device> getDeviceByUPC(@PathVariable("code") String code)
 	{
-		Device device = deviceService.getDeviceByUPC(upc);
+		Device device = deviceService.getDeviceByUPC(code);
 		return new ResponseEntity<Device>(device, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Device with an Installation Date",response = Iterable.class)
-	@GetMapping("installed")
-	public ResponseEntity<List<Device>> getDeviceByDateInstalled(@RequestParam("date") String date)
+	@GetMapping("installed/{date}")
+	public ResponseEntity<List<Device>> getDeviceByDateInstalled(@PathVariable("date") String date)
 	{
 		List<Device> device = deviceService.getDeviceByDateInstalled(date);
 		return new ResponseEntity<List<Device>>(device, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a Device with a PropertyID",response = Iterable.class)
-	@GetMapping("property")
-	public ResponseEntity<List<Device>> getDeviceByPropertyID(@RequestParam("id") long id)
+	@GetMapping("property/{id}")
+	public ResponseEntity<List<Device>> getDeviceByPropertyID(@PathVariable("id") long id)
 	{
 		List<Device> device = deviceService.getDeviceByPropertyID(id);
 		return new ResponseEntity<List<Device>>(device, HttpStatus.OK);

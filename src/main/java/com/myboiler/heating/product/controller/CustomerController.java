@@ -8,10 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myboiler.heating.product.entity.Customer;
 import com.myboiler.heating.product.service.ICustomerService;
@@ -43,36 +43,36 @@ public class CustomerController {
 		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);				
 	}
 	@ApiOperation(value = "Search a customer with an Name",response = Customer.class)
-	@GetMapping("name")
-	public ResponseEntity<Customer> getCustomerByName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName)
+	@GetMapping("name/{firstName}/{lastName}")
+	public ResponseEntity<Customer> getCustomerByName(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName)
 	{
 		Customer customer = customerService.getCustomerByName(firstName, lastName);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a customer with an ID",response = Customer.class)
-	@GetMapping("id")
-	public ResponseEntity<Customer> getCustomerByID(@RequestParam("customerId") long customerId)
+	@GetMapping("getbyid/{id}")
+	public ResponseEntity<Customer> getCustomerByID(@PathVariable("id") long customerId)
 	{
 		Customer customer = customerService.getCustomerByID(customerId);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a customer by Region",response = Iterable.class)
-	@GetMapping("regionwise")
-	public ResponseEntity<List<Customer>> getCustomerByRegion(@RequestParam("region") String region)
+	@GetMapping("regionwise/{region}")
+	public ResponseEntity<List<Customer>> getCustomerByRegion(@PathVariable("region") String region)
 	{
 		List<Customer> customer = customerService.getCustomerByRegion(region);
 		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a customer by City",response = Iterable.class)
-	@GetMapping("citywise")
-	public ResponseEntity<List<Customer>> getCustomerByCity(@RequestParam("city") String city)
+	@GetMapping("citywise/{city}")
+	public ResponseEntity<List<Customer>> getCustomerByCity(@PathVariable("city") String city)
 	{
 		List<Customer> customer = customerService.getCustomerByCity(city);
 		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
 	}
 	@ApiOperation(value = "Search a customer by Company name",response = Iterable.class)
-	@GetMapping("company")
-	public ResponseEntity<List<Customer>> getCustomerByCompany(@RequestParam("companyName") String companyName)
+	@GetMapping("company/{companyName}")
+	public ResponseEntity<List<Customer>> getCustomerByCompany(@PathVariable("companyName") String companyName)
 	{
 		List<Customer> customer = customerService.getCustomerByCompany(companyName);
 		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
@@ -92,8 +92,8 @@ public class CustomerController {
 		}
 	}
 	@ApiOperation(value = "Delete customer")
-	@DeleteMapping("churn")
-	public ResponseEntity<Void> deleteCustomer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName)
+	@DeleteMapping("churn/{firstName}/{lastName}")
+	public ResponseEntity<Void> deleteCustomer(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName)
 	{
 		boolean status = customerService.deleteCustomer(firstName, lastName); 
 		if(status)
