@@ -5,10 +5,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.myboiler.heating.product.entity.Device;
-@Transactional
+
 @Repository
 public class DeviceDAOImpl implements IDeviceDAO{
 	@PersistenceContext

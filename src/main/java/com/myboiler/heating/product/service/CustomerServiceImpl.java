@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myboiler.heating.product.dao.ICustomerDAO;
 import com.myboiler.heating.product.entity.Customer;
 
 @Service
+@Transactional
 public class CustomerServiceImpl implements ICustomerService {
 	@Autowired
 	private ICustomerDAO customerDAO;
