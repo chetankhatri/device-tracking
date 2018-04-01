@@ -20,7 +20,7 @@ jobs:
             - ~/.m2
           key: device-tracking-{{ checksum "pom.xml" }}
       
-      - run: mvn clean build
+      - run: mvn clean package
       
       - store_artifacts:
-          path: target/device-tracking-0.0.1-SNAPSHOT.jar
+          path: target/product-0.0.1-SNAPSHOT.jar
